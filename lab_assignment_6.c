@@ -3,6 +3,23 @@
 
 int search(int numbers[], int low, int high, int value) 
 {
+	if (low > high) // base case
+		return -1;
+
+	int mid = low + (high - low) / 2;
+
+	if (numbers[mid] == value) {
+		return mid;
+	}
+	else if (numbers[mid] < value) {
+		return search(numbers, mid + 1, high, value);
+	}
+	else {
+		return search(numbers, low , mid - 1, value);
+	}
+
+
+	/*
 	if (numbers[low] == numbers[high]) {
 		if (numbers[high]==value)
 			return high;
@@ -12,6 +29,7 @@ int search(int numbers[], int low, int high, int value)
 	if (numbers[high]==value)
 		return high;
 	return search(numbers, 0, high-1, value);
+	*/
 }
 
 void printArray(int numbers[], int sz)
